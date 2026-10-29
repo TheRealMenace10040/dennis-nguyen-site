@@ -190,6 +190,9 @@ a { color: inherit; }
   gap: 20px;
   align-items: center;
 }
+.work-link { text-decoration: none; color: inherit; }
+.work-link:hover .row-title { color: var(--accent); }
+.work-link:hover .row-arrow { color: var(--accent); }
 .row-num {
   font-family: var(--mono);
   color: var(--accent);

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From Bench to LIMS — Dennis Nguyen</title>
+<meta name="description" content="Case study: what I learned as the lab-side lead on a LIMS implementation in a regulated medical-device QC lab, plus an interactive demo built on synthetic environmental-monitoring data.">
+<meta name="theme-color" content="#0d0f10">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="case-study.css">
+</head>
+<body>
+
+<header class="nav">
+  <a class="nav-brand" href="index.html">dennis_nguyen</a>
+  <nav class="nav-links">
+    <a href="#story">story</a>
+    <a href="#results">results</a>
+    <a href="#demo">demo</a>
+    <a href="#learned">learned</a>
+  </nav>
+</header>
+
+<section class="hero cs-hero">
+  <div class="eyebrow">CASE STUDY // LIMS IMPLEMENTATION // LAB INFORMATICS</div>
+  <h1>From bench to LIMS.</h1>
+  <p class="lede">I was the lab-side lead on a LIMS implementation in a regulated medical-device QC lab. I wrote the requirements, turned SOPs into system workflows, validated the system and trained the people who use it. This page covers what I did, what I took from it, and a working demo of the kind of data tooling I build on top of a LIMS.</p>
+  <div class="cta-row">
+    <a href="#demo" class="btn btn-primary">Jump to the demo</a>
+    <a href="index.html" class="btn btn-secondary">Back to home</a>
+  </div>
+</section>
+
+<section class="cs-meta">
+  <div class="meta-item"><div class="meta-k">Role</div><div class="meta-v">Lab-side lead, QC Microbiology</div></div>
+  <div class="meta-item"><div class="meta-k">Setting</div><div class="meta-v">GMP medical-device manufacturing</div></div>
+  <div class="meta-item"><div class="meta-k">Scope</div><div class="meta-v">LIMS 2.0 rollout, data migration, reporting</div></div>
+  <div class="meta-item"><div class="meta-k">Toolkit</div><div class="meta-v">LIMS, SQL, Snowflake, Power BI, IQ/OQ/PQ</div></div>
+</section>
+
+<section id="story" class="cs-section">
+  <div class="section-label">// 01 THE STORY</div>
+  <div class="cs-grid">
+    <h2>A lab that ran on records, and a system that had to match how the lab actually works.</h2>
+    <div class="cs-prose">
+      <p>QC Microbiology tests have to happen on a defined schedule, results have to be reviewed, and every record has to stand up to an audit. A LIMS only helps if the system's workflows match how the lab really works, and if the people using it trust it.</p>
+      <p>When the lab moved to LIMS 2.0, I represented the people who run the tests. My job was to make sure the system did what the SOPs say, that we could prove it, and that the team could use it on day one.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="section-label">// 02 WHAT I DID</div>
+  <div class="steps">
+    <div class="step"><div class="step-num">01</div><div><div class="step-title">Defined user requirements</div><div class="step-body">Captured what QC Microbiology needs from the system: what gets tested, when, by whom, and what has to be recorded.</div></div></div>
+    <div class="step"><div class="step-num">02</div><div><div class="step-title">Turned SOPs into workflows</div><div class="step-body">Translated written procedures into system workflows, and redlined SOPs where the system and the document needed to agree.</div></div></div>
+    <div class="step"><div class="step-num">03</div><div><div class="step-title">Validated the system</div><div class="step-body">Executed validation test scripts and reviewed critical calculations, audit trails and data security before go-live.</div></div></div>
+    <div class="step"><div class="step-num">04</div><div><div class="step-title">Migrated history</div><div class="step-body">Led the move of five years of microbial identification records from paper logs into the LIMS.</div></div></div>
+    <div class="step"><div class="step-num">05</div><div><div class="step-title">Trained users after go-live</div><div class="step-body">Taught the team to work in the new system and fielded the questions that only show up once real samples are flowing.</div></div></div>
+    <div class="step"><div class="step-num">06</div><div><div class="step-title">Built the reporting layer</div><div class="step-body">Wrote and maintain SQL against the LIMS data and own Power BI reports that track testing volume and turnaround against SOP-defined frequencies.</div></div></div>
+  </div>
+</section>
+
+<section id="results" class="cs-section">
+  <div class="section-label">// 03 RESULTS</div>
+  <div class="stats cs-stats">
+    <div class="stat"><div class="stat-num">100K+</div><div class="stat-label">microbial records queried with 10+ SQL queries</div></div>
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Power BI reports (LIMS → Snowflake → Power BI)</div></div>
+    <div class="stat"><div class="stat-num">50+</div><div class="stat-label">stakeholders, including 30 executives</div></div>
+    <div class="stat"><div class="stat-num">~2</div><div class="stat-label">at-risk tests flagged per month before samples expire</div></div>
+    <div class="stat"><div class="stat-num">5 yrs</div><div class="stat-label">of paper ID records moved into the LIMS</div></div>
+    <div class="stat"><div class="stat-num">16+</div><div class="stat-label">equipment IQ/OQ/PQ protocols and reports</div></div>
+  </div>
+</section>
+
+<section id="demo" class="cs-section">
+  <div class="section-label">// 04 INTERACTIVE DEMO</div>
+  <h2 class="demo-h">Environmental monitoring trend explorer</h2>
+  <p class="demo-lede">This is a small tool of the kind I build on top of LIMS data. It shows weekly cleanroom monitoring trends with alert and action limits, plus a board of tests against their SOP frequencies.</p>
+  <div class="notice" role="note"><strong>All data on this page is synthetic.</strong> It is generated in your browser and does not come from Edwards Lifesciences or any real lab. Zone names and limits are made up for the demo.</div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <div class="panel-title">A. Weekly viable counts by zone</div>
+      <div class="controls" role="group" aria-label="Choose a cleanroom zone">
+        <button class="chip active" data-zone="0" aria-pressed="true">Zone A · ISO 5</button>
+        <button class="chip" data-zone="1" aria-pressed="false">Zone B · ISO 7</button>
+        <button class="chip" data-zone="2" aria-pressed="false">Zone C · ISO 7</button>
+        <button class="chip" data-zone="3" aria-pressed="false">Zone D · ISO 8</button>
+      </div>
+    </div>
+    <div class="chart-wrap">
+      <svg id="trend" viewBox="0 0 800 300" role="img" aria-labelledby="trend-label"></svg>
+      <div id="tip" class="tip" hidden></div>
+    </div>
+    <p id="trend-label" class="sr-only">Line chart of weekly viable counts for the selected zone, with alert and action limits.</p>
+    <div class="legend">
+      <span><i class="sw sw-line"></i>weekly count (CFU)</span>
+      <span><i class="sw sw-alert"></i>alert limit</span>
+      <span><i class="sw sw-action"></i>action limit</span>
+      <span><i class="sw sw-dot"></i>excursion</span>
+    </div>
+    <div class="readout" id="readout"></div>
+    <table class="tbl" id="exc-table">
+      <caption>Excursions in the selected zone</caption>
+      <thead><tr><th>Week</th><th>Count (CFU)</th><th>Level</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <div class="panel-title">B. Test frequency board</div>
+      <label class="slider-wrap" for="adv">Advance the calendar: <strong id="adv-val">day 0</strong>
+        <input type="range" id="adv" min="0" max="14" value="0">
+      </label>
+    </div>
+    <p class="panel-sub">Each test has a frequency set by an SOP. As time passes, tests that have not been run slide from on-track to at-risk to out of frequency. This is the kind of thing a report should catch before it becomes a deviation.</p>
+    <table class="tbl" id="freq-table">
+      <thead><tr><th>Test</th><th>Frequency</th><th>Last run</th><th>Days left</th><th>Status</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">C. The SQL behind panel A</div>
+    <p class="panel-sub">A generic example of the aggregate behind the trend. Table and column names are illustrative, not from any real system.</p>
+<pre class="code"><code>SELECT
+    zone,
+    DATE_TRUNC('week', sample_date) AS week_start,
+    SUM(cfu_count)                  AS weekly_cfu,
+    MAX(alert_limit)                AS alert_limit,
+    MAX(action_limit)               AS action_limit,
+    CASE
+        WHEN SUM(cfu_count) &gt; MAX(action_limit) THEN 'ACTION'
+        WHEN SUM(cfu_count) &gt; MAX(alert_limit)  THEN 'ALERT'
+        ELSE 'OK'
+    END AS status
+FROM em_results
+WHERE sample_date &gt;= DATEADD('week', -52, CURRENT_DATE)
+GROUP BY zone, week_start
+ORDER BY zone, week_start;</code></pre>
+  </div>
+</section>
+
+<section id="learned" class="cs-section">
+  <div class="section-label">// 05 WHAT I TOOK FROM IT</div>
+  <div class="learned">
+    <div class="learn"><div class="learn-title">The best requirement comes from the person at the bench.</div><div class="learn-body">A system that matches the SOP on paper but not the actual workflow gets worked around. Sitting with the people who run the tests mattered more than any template.</div></div>
+    <div class="learn"><div class="learn-title">Validation is documentation of trust.</div><div class="learn-body">Running scripts is the easy part. Explaining clearly what you tested, why, and what the evidence shows is the part auditors and teammates actually read.</div></div>
+    <div class="learn"><div class="learn-title">Reporting is where a LIMS earns its keep.</div><div class="learn-body">Once data is in one place, a good query and a clear dashboard turn it into early warning. That is the part I most enjoy and want to do more of.</div></div>
+    <div class="learn"><div class="learn-title">I want to bring this to other labs.</div><div class="learn-body">I know what it is like to be on the receiving end of a LIMS rollout. I would like to be the person helping other labs get through theirs.</div></div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div>
+    <div class="contact-title">Hiring for lab informatics, LIMS implementation or quality systems?</div>
+    <a href="mailto:dennishungnguyen@gmail.com" class="link contact-email">dennishungnguyen@gmail.com</a>
+  </div>
+  <div class="copyright">© 2026</div>
+</section>
+
+<script src="script.js"></script>
+<script src="case-study.js"></script>
+</body>
+</html>

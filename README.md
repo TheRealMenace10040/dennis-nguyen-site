@@ -15,6 +15,7 @@ Plain static HTML/CSS/JS — no build step, no framework, no dependencies.
 - `index.html` — page markup
 - `styles.css` — styling
 - `script.js` — scroll-spy nav highlighting
+- `lims-case-study.html`, `case-study.css`, `case-study.js` — "From Bench to LIMS" case study with an interactive environmental-monitoring demo (all data synthetic, generated in the browser from a fixed seed)
 - `manifest.json`, `icon-*.png`, `apple-touch-icon.png`, `favicon-32.png` — PWA/home-screen icon support (added post-export, generated with `generate_icons.py`)
 
 ## Development
